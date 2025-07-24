@@ -166,19 +166,14 @@
     },
       {
       "type": "select",
-      "id": "layout_style",
-      "label": "type",
+      "id": "content_direction",
+      "label": "Direction",
       "options": [
-        {
-          "value": "flex",
-          "label": "Stack"
-        },
-        {
-          "value": "grid",
-          "label": "Grid"
-        }
+        { "value": "row", "label": "Horizontal" },
+        { "value": "column", "label": "Vertical" }
       ],
-      "default": "flex"
+      "default": "column",
+      "visible_if": "{{ block.settings.layout_style == 'flex' }}"
     },
     {
       "type": "select",
