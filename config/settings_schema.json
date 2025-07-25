@@ -330,7 +330,7 @@
       {
         "type": "text",
         "id": "type_body_font",
-        "label": "t:settings_schema.typography.settings.type_body_font.label"
+        "label": "t:settings_schema.typography.settings.type_body_font.label" 
       },
       {
         "type": "select",
