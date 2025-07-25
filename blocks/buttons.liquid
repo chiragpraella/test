@@ -1,0 +1,169 @@
+{% style %}
+    .link-block {
+        display: inline-flex;
+    }
+  
+    .link-block-icon-right {
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+    }
+  
+    .link-block svg {
+        fill: rgb(var(--fill-link-icon-color));
+    }
+  
+    .link--with-icon {
+        gap: 5px;
+    }
+    @media (max-width: 767px) {
+        .link-block.full_width {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+{% endstyle %}
+
+    <a href="{{ block.settings.link }}" class="link-block {% if block.settings.style_class == 'btn-link-primary' or block.settings.style_class == 'btn-link-secondary' %} btn-link {% else %}btn {% endif %} {{ block.settings.style_class }} {{ block.settings.size_class }} {% if block.settings.icon != "none" %} link--with-icon{% endif %} {% if block.settings.hide_mobile %} d-none d-md-inline-flex {% endif %} {% if block.settings.hide_desktop %} d-inline-flex d-md-none {% endif %} {% if block.settings.full_width %} full_width {% endif %}"
+        {%- if block.settings.open_in_new_tab -%}
+            target="_blank" rel="noopener noreferrer"
+        {%- endif -%} 
+        {{ block.shopify_attributes }} >
+            {%- if block.settings.icon != 'none' -%}
+                <svg aria-hidden="true" focusable="false" style="width:16px;height:16px;"><use href="#{{ block.settings.icon }}"></use></svg>
+            {%- endif -%}
+        {{ block.settings.label }}
+    </a>
+  
+{% schema %}
+    {
+        "name": "Button",
+        "tag": null,
+        "settings": [
+            {
+                "type": "url",
+                "id": "link",
+                "label": "Link"
+            },
+            {
+                "type": "select",
+                "id": "icon",
+                "label": "Icon",
+                "options": [
+                    {
+                        "value": "none",
+                        "label": "None"
+                    },
+                    {
+                        "value": "icon-arrow-left",
+                        "label": "Arrow left"
+                    },
+                    {
+                        "value": "icon-arrow-right",
+                        "label": "Arrow right"
+                    },
+                    {
+                        "value": "icon-arrow-next",
+                        "label": "Arrow Next"
+                    },
+                    {
+                        "value": "icon-arrow-prev",
+                        "label": "Arrow Previous"
+                    }
+                ],
+                "default": "none"
+            },
+            {
+                "type": "text",
+                "id": "label",
+                "label": "Label",
+                "default": "Button label"
+            },
+            {
+                "type": "select",
+                "id": "style_class",
+                "label": "Style",
+                "options": [
+                    {
+                        "value": "btn-primary",
+                        "label": "Primary"
+                    },
+                    {
+                        "value": "btn-secondary",
+                        "label": "Secondary"
+                    },
+                    {
+                        "value": "btn-dark",
+                        "label": "Dark"
+                    },
+                    {
+                        "value": "btn-light",
+                        "label": "Light"
+                    },
+                    {
+                        "value": "btn-link-primary",
+                        "label": "Link Primary"
+                    },
+                    {
+                        "value": "btn-link-secondary",
+                        "label": "Link Secondary"
+                    }
+                ],
+                "default": "btn-primary"
+            },
+            {
+                "type": "select",
+                "id": "size_class",
+                "label": "Button Size",
+                "options": [
+                    {
+                        "value": "btn-sm",
+                        "label": "Small"
+                    },
+                    {
+                        "value": "",
+                        "label": "Default"
+                    },
+                    {
+                        "value": "btn-lg",
+                        "label": "Large"
+                    }
+                ],
+                "default": ""
+            },
+            {
+                "type": "checkbox",
+                "id": "open_in_new_tab",
+                "label": "Open this link in a new window",
+                "default": false
+            },
+            {
+                "type": "checkbox",
+                "id": "hide_desktop",
+                "label": "Hide In Desktop",
+                "default": false
+            },
+            {
+                "type": "checkbox",
+                "id": "hide_mobile",
+                "label": "Hide In Mobile",
+                "default": false
+            },
+            {
+                "type": "checkbox",
+                "id": "full_width",
+                "label": "Button Full Width In Mobile",
+                "default": false
+            }
+        ],
+        "presets": [
+            {
+                "name": "Button",
+                "settings": {
+                    "label": "Button label",
+                    "style_class": "btn-primary"
+                }
+            }
+        ]
+    }
+{% endschema %}
+  

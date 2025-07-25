@@ -1,0 +1,151 @@
+
+
+/* Play/Pause Icon */
+
+.cta-btn {
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.play__button{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    font-size: 2rem;
+}
+
+.custom-video-container.playing--video .cta-btn {
+    display: none;
+}
+.custom-video-container.playing--video .content-section{
+    display: none;
+}
+
+.media-with-text .placement--grid.media-height-square{
+    aspect-ratio: 1;
+}
+
+.media-with-text .placement--grid.media-height-portrait{
+    aspect-ratio: 0.75;
+}
+
+.media-with-text .placement--grid.media-height-landscape{
+    aspect-ratio: 1.25;
+}
+
+
+.placement--grid:not(.poster--none) .video-section{
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.placement--grid:not(.poster--none) .video-section iframe{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.placement--grid .video-section video{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+.content-section .poster-image img,
+.content-section .poster-image video,
+.content-section .poster-image iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.content-section .poster-image svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.modal-video-close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+}
+
+
+.video-container video{
+    display: block;
+}   
+
+.video-container iframe{
+    aspect-ratio: 1.766;
+    width: 100%;
+}   
+
+
+/* 
+.custom-video-container.playing--video .cta-btn {
+    display: none;
+}
+.custom-video-container .video-section{
+    display: none;
+}
+.custom-video-container.playing--video .video-section{
+    display: block;
+}
+
+.custom-video-container.playing--video .play__button{
+    display: none;
+}
+.video-section,
+.content-section {
+    position: relative;
+    aspect-ratio: 1.77/1;
+    height: 100%;
+}
+@media (min-width: 576px) {
+    .video-section,
+    .content-section {
+        aspect-ratio: 1.77/1;
+    }
+}
+
+.video-section iframe,
+.video-section video,
+.content-section .poster-image {
+    width: 100%;
+    height: 100%;
+}
+
+
+.full-video-caption:not(.media--mobile-bottom){
+    position: absolute;
+}
+
+@media (min-width: 768px) {
+    .full-video-caption {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
+
+.full-video-layout.playing--video .full-video-caption {
+    display: none !important;
+}
+
+#PopupModal-video .video-container iframe,
+#PopupModal-video .video-container video{
+    width:100%;
+    aspect-ratio: 1.775 / 1;
+}
+
+ */

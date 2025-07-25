@@ -1,0 +1,36 @@
+{% comment %}
+  Renders product variant-picker
+
+  Accepts:
+  - product: {Object} product object.
+  
+  Usage:
+  {% render 'product-price', product: product %}
+{% endcomment %}
+  
+  {% comment %} Compare at price display {% endcomment %}
+  {%- if product.selected_variant and product.selected_variant.compare_at_price > product.selected_variant.price -%}
+    <del class="price small m-0 p-0 me-1 money d-inline-block {{ block.settings.sale_price_font_size }} {{ block.settings.sale_price_font_weight }}" data-comparePrice  style="color:{{ block.settings.sale_color }}">{{ product.selected_variant.compare_at_price | money }}</del>
+  {%- elsif product.compare_at_price > product.price -%}
+    <del class="price small m-0 p-0 me-1 money d-inline-block {{ block.settings.sale_price_font_size }} {{ block.settings.sale_price_font_weight }}" data-comparePrice style="color:{{ block.settings.sale_color }}">{{ product.compare_at_price | money }}</del>
+  {%- endif -%}
+
+  {% comment %} Sale price display {% endcomment %}
+  <span class="price m-0 p-0 money {{ block.settings.price_font_size }} {{ block.settings.price_font_weight }}" data-currentPrice style="color:{{ block.settings.color }}">
+    {%- if product.selected_variant != blank -%}
+      {{ product.selected_variant.price | money }}
+    {%- elsif product.price_varies -%}
+      {%-  liquid
+        assign minPrice = product.price_min | money
+        assign maxPrice = product.price_max | money
+      -%}
+      {{- 'products.product.price_range' | t: min: minPrice, max: maxPrice | escape -}}
+      {%- if product.quantity_price_breaks_configured? -%}
+        <div class="volume-pricing-note fs-xs">
+          <span>{{ 'products.product.volume_pricing.note' | t }}</span>
+        </div>
+      {%- endif -%}
+    {%- else -%}
+      {{- product.price | money -}}
+    {%- endif -%}
+  </span>

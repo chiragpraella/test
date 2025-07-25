@@ -1,0 +1,446 @@
+.storefront-filters .collapsible_panel .panel_toggle .icon-collapsible{
+    width: 12px;
+    height: 12px;
+}
+.filter__price{
+    padding-top: 15px;
+}
+.storefront-filters .collapsible_panel .filter__list {
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 10px;
+}
+.storefront-filters .collapsible_panel .filter__list,
+.storefront-filters .collapsible_panel .filter__list .form-check{
+    margin-bottom: 0;
+}
+.storefront-filters .collapsible_panel .panel_toggle .icon-collapsible svg{
+    width: 100%;
+    height: 100%;
+}
+.storefront-filters .collapsible_panel .panel_toggle .icon-collapsible svg{
+    display: block;
+}
+.storefront-filters .collapsible_panel.open .panel_toggle .icon-collapsible svg{
+    transform: rotate(180deg);
+}
+.storefront-filters .collapsible_panel .panel_toggle .icon-collapsible::after,
+.storefront-filters .collapsible_panel .panel_toggle .icon-collapsible::before{
+    display: none;
+}
+.filter-option-clear:only-child {
+    display: none;
+}
+.filter-option-clear.disabled,
+.mobile-filter__clear.disabled {
+    pointer-events: none;
+}
+.filter-option-clear:not(.btn) {
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    padding: 8px 12px;
+    border-radius: 15px;
+    color: var(--pe-color-black);
+}
+.filter-option-clear span {
+    pointer-events: none;
+}
+
+.active-filters-desktop:empty{
+    display: none !important;
+}
+
+
+/*----------  Color Filter Style  ----------*/
+
+
+.color-options-list .color-options {
+    padding: 0;
+    margin: 0;
+}
+
+.color-options-list .filter__list{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row !important;
+    gap: 5px !important;
+}
+
+.color-options .form-check-input{
+    display: none;
+}
+
+.color-options .form-check-input + .form-check-label{
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+}
+.color-options .form-check-input + .form-check-label::after{
+    content: '';
+    display: block;
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #FFF;
+    border-radius: 50%;
+    opacity: 0;
+}
+.color-options .form-check-input:checked + .form-check-label::after{
+    opacity: 1;
+}  
+
+
+/*=============================================
+=            Topbar Filter CSS                =
+=============================================*/
+
+
+@media (min-width: 992px) {
+    .topbar-filter .filter__wrapper{
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .topbar-filter .collapsible_panel{
+        border-bottom: 0;
+        position: relative;
+    }
+
+    .topbar-filter .collapsible_panel button{
+        border: var(--pe-input-border-width) solid var(--pe-input-border-color);
+        position: relative;
+        border-radius: var(--pe-input-border-radius);
+        font-family: var(--pe-input-font-family);
+        font-size: var(--pe-input-font-size);
+        font-weight: var(--pe-input-font-weight);
+        color: var(--pe-input-text-color);
+        line-height: var(--pe-input-line-height);
+        background-color: transparent;
+        width: 100%;
+    }
+
+    .topbar-filter .collapsible_panel .panel_toggle{
+        padding: var(--pe-input-y-padding) var(--pe-input-x-padding);
+        display: flex;
+        align-items: center;
+        line-height: 24px;
+        cursor: pointer;
+        gap: 20px;
+    }
+
+    .topbar-filter .collapsible_panel .toggle-content{
+        display: block;
+        position: absolute;
+        top: calc(100% + 5px);
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        border: var(--pe-input-border-width) solid var(--pe-input-border-color);
+        border-radius: var(--pe-input-border-radius);
+        background-color: var(--pe-input-bg-color);
+        width: 195px;
+        z-index: 9;
+        clip-path: inset(0 0 100% 0);
+        transition: clip-path .3s ease-in-out,border-color .3s ease-in-out;
+    }
+
+    .topbar-filter .collapsible_panel .toggle-content.open{
+        clip-path: inset(0 0 0 0);
+    }
+    .topbar-filter .collapsible_panel ul li{
+        margin-bottom: 0;
+    }
+    .topbar-filter .collapsible_panel .tab_toggle svg{
+        transition: ease-in-out 0.25s;
+    }
+
+    .topbar-filter .collapsible_panel.open .tab_toggle svg{
+        transform: rotate(180deg); 
+    }
+    .topbar-filter .collapsible_panel .price-options-list{
+        width: 340px;
+    }
+    .topbar-filter .collapsible_panel .price-options-list .filter__price{
+        margin: 0;
+        padding: 20px;
+    }
+
+    .sidebar-filter .filter__wrapper{
+        flex-direction: column;
+    }
+}
+
+
+/*=============================================
+=            Sidebar Filter CSS                =
+=============================================*/
+
+
+.sidebar-filter .collapsible_panel .filter__list {
+    padding: 5px 0 20px;
+}
+
+
+
+
+/*=============================================
+=           Mobile Filter CSS                =
+=============================================*/
+
+
+@media (max-width: 991px) {
+    .storefront-filters {
+        display: none;
+    }
+
+     .custom-drawer.collection-sorting{
+        width: 100%;
+        max-width: 100%;
+        top: auto;
+        bottom: 0;
+        transform: translate3d(0, var(--pe-drawer-position-transform-x),0);
+    }
+    .custom-drawer.collection-sorting.open{
+        transform: translateZ(0);
+    }
+    .collection-sorting .filter__form .custom-dropdown .toggle-content{
+        position: relative;
+        display: block;
+        clip-path: initial;
+        border: 0;
+    }
+
+    .collection-sorting .filter__form .custom-dropdown .toggle-content {
+        padding-bottom:30px;
+    }
+
+    #storefront-filter-drawer .storefront-filters {
+        display: flex;
+    }
+    #storefront-filter-drawer .drawer-body{
+        display: flex;
+        flex: 1 1 auto;
+    }
+    #storefront-filter-drawer .sidebar-filter,
+    #storefront-filter-drawer .topbar-filter,
+    #storefront-filter-drawer .storefront-filters{
+        display: flex;
+        width: 100%;
+    }
+    #storefront-filter-drawer .filter__form{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    #storefront-filter-drawer .filter__form .filter__wrapper{
+        flex-direction: column;
+        flex: 1 1 auto;
+        overflow: auto;
+        padding-inline: 15px;
+    }
+
+    #storefront-filter-drawer .collapsible_panel .panel_toggle{
+        padding-block: 12px;
+    }
+    #storefront-filter-drawer .collapsible_panel .toggle-content{
+        display: flex;
+        padding: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 9;
+        background: var(--pe-color-white) !important;
+        width: -webkit-fill-available;
+        flex-direction: column;
+        height: 100% !important;
+        transform: translateX(-100%);
+        overflow: hidden;
+        transition: all .5s cubic-bezier(.19,1,.22,1);
+        transition-timing-function: cubic-bezier(.19,1,.22,1);
+        transform: translate3d(var(--pe-drawer-position-transform-x),0,0);
+    }
+    #storefront-filter-drawer .collapsible_panel .toggle-content.open{
+        transform: translateX(0%);
+    }
+    
+    .storefront-filters .collapsible_panel .panel_toggle .icon-collapsible svg{
+        transform: rotate(-90deg);
+    }
+
+    #storefront-filter-drawer .collapsible_panel .toggle-content-wrap .filter__list{
+        padding: 15px;
+        gap: 15px;
+        overflow: auto;
+    }
+
+    #storefront-filter-drawer .collapsible_panel .toggle-content-wrap > price-range{
+        padding: 25px 15px 15px;
+        overflow: auto;
+    }
+
+    #storefront-filter-drawer .collapsible_panel .toggle-content-wrap > *{
+        margin: 0 !important;
+    }
+
+    #storefront-filter-drawer .drawer-filter-footer{
+        padding: 15px;
+        gap: 15px;
+        z-index: 9;
+        background: var(--pe-color-white) !important;
+    }
+    #storefront-filter-drawer .drawer-filter-footer > * {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 0 0%;
+        flex: 1 0 0%;
+    }
+
+    #storefront-filter-drawer .collapsible_panel .toggle-content-wrap{
+        display: flex;
+        flex-direction: column;
+        height: calc(100% - 75px);
+    }
+    .collection-sorting .filter__form .filter__wrapper,
+    .collection-sorting .filter__form .tab_toggle{
+        display: none !important;
+    }
+
+    #storefront-sort-drawer .tab_toggle{
+        display: none;
+    }
+    #storefront-sort-drawer .custom-dropdown .toggle-content{
+        position: relative;
+        clip-path: inset(0 0 0 0);
+        border: 0;
+    }
+    #storefront-sort-drawer .custom-dropdown .toggle-content .toggle-content-wrap {
+        padding: 25px 0;
+    }
+    #storefront-sort-drawer{
+        --pe-drawer-width: 100%;
+        --pe-drawer-max-width: 100%;
+    }
+
+    .sort_filter_drawer .custom-dropdown .toggle-content{
+        position: fixed;
+        top: 52px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        background-color: var(--pe-input-bg-color);
+        width: 100%;
+        z-index: 9;
+        clip-path: none !important;
+        transition: clip-path .3s ease-in-out, border-color .3s ease-in-out;
+        bottom: 0;
+        left: 100%;
+    }
+    .sort_filter_drawer .custom-dropdown .toggle-content.open {
+        transform: translate(0);
+    }
+    .go-back{
+        position: absolute;
+        left: 10px;
+    }
+} 
+
+
+
+/*=====  Price Range Slider  ======*/
+
+
+div.range-slider {
+    position: relative;
+    width: 100%;
+    height: 20px;
+    text-align: center;
+  }
+
+  div.range-slider .rangeValues{
+    width: 100%;
+    height: 5px;
+    background: var(--pe-color-primary-100);
+    display: block;
+    position: absolute;
+    top: 8px;
+    z-index: 1;
+    border-radius: 3px;
+  }
+
+  div.range-slider input[type=range] {
+    pointer-events: none;
+    position: absolute;
+    -webkit-appearance: none;
+    border: none;
+    border-radius: 3px;
+    /* background: var(--pe-color-primary-100); */
+    background:transparent;
+    left: 0;
+    top: 8px;
+    width: 100%;
+    height: 5px;
+    margin: 0;
+    padding: 0;
+    z-index: 2;
+  }
+  div.range-slider input[type=range]::-webkit-slider-thumb {
+    pointer-events: all;
+    position: relative;
+    z-index: 1;
+    outline: 0;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 0;
+    background-color: var(--pe-color-primary-500);
+  }
+  div.range-slider input[type=range]::-moz-range-thumb {
+    pointer-events: all;
+    position: relative;
+    z-index: 10;
+    -moz-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 0;
+    background-color: var(--pe-color-primary-500);
+  }
+  div.range-slider input[type=range]::-ms-thumb {
+    pointer-events: all;
+    position: relative;
+    z-index: 10;
+    -ms-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 0;
+    background-color: var(--pe-color-primary-500);
+  }
+  div.range-slider input[type=range]::-moz-range-track {
+    position: relative;
+    z-index: -1;
+    background-color: transparent;
+    border: 0;
+  }
+  div.range-slider input[type=range]:last-of-type::-moz-range-track {
+    -moz-appearance: none;
+    background: none transparent;
+    border: 0;
+  }
+  div.range-slider input[type=range]::-moz-focus-outer {
+    border: 0;
+  }
+
+  #Filter-Price-lte-2{
+      background: transparent !important;
+  } 

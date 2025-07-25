@@ -1,0 +1,17 @@
+{% unless template.name == 'list-collections' or template.name == 'collection' or template.name == 'index' %}
+    <link data-href="{{ 'component-card.css' | asset_url }}" class="lazyload-asset" rel="stylesheet" />
+{% endunless %}
+
+{%- unless template == 'cart' -%}
+<link data-href="{{ 'component-cart-drawer.css' | asset_url }}" class="lazyload-asset" rel="stylesheet" />
+{%- endunless -%}
+
+<link data-href="{{ 'component-search.css' | asset_url }}" class="lazyload-asset" rel="stylesheet" />
+
+<link href="{{ 'component-modal.css' | asset_url }}" class="lazyload-asset" rel="stylesheet" />
+
+{%- if template == 'page' -%}
+    {{ 'template-page.css' | asset_url | stylesheet_tag: preload: true }} 
+{%- endif -%}
+
+{{ 'snotify-toast.css' | asset_url | stylesheet_tag: preload: true }}

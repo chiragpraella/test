@@ -1,0 +1,408 @@
+{{ 'global-video-with-text.css' | asset_url | stylesheet_tag }}
+
+{%- liquid 
+    assign posterVideo = block.settings.poster_video_local | image_url: width: 600
+    assign videoURL = block.settings.video_url
+    if block.settings.video_type == 'local'
+        assign videoObj = block.settings.video_local.sources | where: "format", "mp4"
+        assign videoURL = videoObj[0].url
+    endif
+-%}
+<div class="custom-video-container flex-shrink-1 h-100 {{ block.settings.width }} {{ block.settings.width_md }} {{ block.settings.width_sm }}">
+    <custom-video class="video-with--text h-100 d-block position-relative placement--{{ block.settings.placement }} poster--{{ block.settings.poster_type }} media-height-{{ block.settings.media_height }}" 
+        data-loop="{{ block.settings.video_loop }}" data-autoplay="{{ block.settings.video_autoplay }}"
+        data-controls="{{ block.settings.video_controls }}" data-muted="{{ block.settings.video_muted }}"
+        data-video-type="{{ block.settings.video_type }}"  data-placement="{{ block.settings.placement }}"
+        data-video-id="{{ videoURL }}">
+
+        {% if block.settings.video_play_button %}
+            <div class="cta-btn">
+                <button class="play__button btn btn-light" data-trigger-video aria-label="{{ 'sections.video-with-text.play_video' | t }}">
+                    <svg aria-hidden="true" focusable="false" style="width:24px;height:24px;"><use href="#icon-play"></use></svg>
+                </button>
+            </div>
+        {% endif %}    
+
+        {% unless block.settings.poster_type == 'none' %}  
+            <div class="content-section h-100 w-100">
+                <div class="poster-image h-100">
+                    {%- if block.settings.poster_type == 'video' and videoURL != blank -%}
+                        
+                        <video data-posterVideo preload="true" playsinline muted loop 
+                            poster="{{ posterVideo }}" data-src="{{ videoURL }}" class="w-100 h-100 d-block">
+                        </video>
+                    {%- elsif block.settings.poster_image != blank -%}
+                        <img srcset="
+                            {%- if block.settings.poster_image.width >= 350 -%}{{ block.settings.poster_image | image_url: width: 350 }} 350w,{%- endif -%}
+                            {%- if block.settings.poster_image.width >= 550 -%}{{ block.settings.poster_image | image_url: width: 550 }} 550w,{%- endif -%}
+                            {%- if block.settings.poster_image.width >= 750 -%}{{ block.settings.poster_image | image_url: width: 750 }} 750w,{%- endif -%}
+                            {%- if block.settings.poster_image.width >= 991 -%}{{ block.settings.poster_image | image_url: width: 991 }} 991w,{%- endif -%}
+                            {%- if block.settings.poster_image.width >= 1200 -%}{{ block.settings.poster_image | image_url: width: 1200 }} 1200w,{%- endif -%}
+                            {%- if block.settings.poster_image.width >= 1500 -%}{{ block.settings.poster_image | image_url: width: 1500 }} 1500w{%- endif -%}"
+                            src="{{ block.settings.poster_image | image_url: width: 50 }}" loading="lazy"
+                            sizes="(min-width: {{ settings.container_width }}) {{ settings.container_width }}, 100vw"
+                            alt="{{ block.settings.poster_image.alt | default: block.settings.title | escape }}"
+                            width="{{ block.settings.poster_image.width }}"
+                            height="{{ block.settings.poster_image.width | divided_by: block.settings.poster_image.aspect_ratio | round }}"
+                        >
+                    {%- else -%}
+                        {% render 'placeholder-image' %}
+                    {%- endif -%}
+                </div>
+            </div>
+        {% endunless %}
+
+        {%- if block.settings.placement == 'grid' and videoURL != blank -%}
+            <div class="video-section w-100" aria-hidden="true"></div>
+        {%- endif -%}
+
+    </custom-video>
+</div>
+ 
+{% schema %}
+    {
+        "name": "Video",
+        "tag": null,
+        "settings": [
+            {
+                "type": "header",
+                "content": "Size"
+            },
+            {
+                "type": "select",
+                "id": "width",
+                "label": "t:settings.width_desktop",
+                "options": [
+                    {
+                        "value": "col-lg-1",
+                        "label": "8%"
+                    },
+                    {
+                        "value": "col-lg-2",
+                        "label": "16%"
+                    },
+                    {
+                        "value": "col-lg-3",
+                        "label": "25%"
+                    },
+                    {
+                        "value": "col-lg-4",
+                        "label": "33%"
+                    },
+                    {
+                        "value": "col-lg-5",
+                        "label": "41%"
+                    },
+                    {
+                        "value": "col-lg-6",
+                        "label": "Half"
+                    },
+                    {
+                        "value": "col-lg-7",
+                        "label": "58%"
+                    },
+                    {
+                        "value": "col-lg-8",
+                        "label": "66%"
+                    },
+                    {
+                        "value": "col-lg-9",
+                        "label": "75%"
+                    },
+                    {
+                        "value": "col-lg-10",
+                        "label": "83%"
+                    },
+                    {
+                        "value": "col-lg-11",
+                        "label": "92%"
+                    },
+                    {
+                        "value": "col-lg-12",
+                        "label": "Full"
+                    },
+                    {
+                        "value": "col-lg-auto",
+                        "label": "Auto"
+                    }
+                ],
+                "default": "col-lg-12"
+            },
+            {
+                "type": "select",
+                "id": "width_md",
+                "label": "t:settings.width_ipad",
+                "options": [
+                    {
+                        "value": "col-md-1",
+                        "label": "8%"
+                    },
+                    {
+                        "value": "col-md-2",
+                        "label": "16%"
+                    },
+                    {
+                        "value": "col-md-3",
+                        "label": "25%"
+                    },
+                    {
+                        "value": "col-md-4",
+                        "label": "33%"
+                    },
+                    {
+                        "value": "col-md-5",
+                        "label": "41%"
+                    },
+                    {
+                        "value": "col-md-6",
+                        "label": "Half"
+                    },
+                    {
+                        "value": "col-md-7",
+                        "label": "58%"
+                    },
+                    {
+                        "value": "col-md-8",
+                        "label": "66%"
+                    },
+                    {
+                        "value": "col-md-9",
+                        "label": "75%"
+                    },
+                    {
+                        "value": "col-md-10",
+                        "label": "83%"
+                    },
+                    {
+                        "value": "col-md-11",
+                        "label": "92%"
+                    },
+                    {
+                        "value": "col-md-12",
+                        "label": "Full"
+                    },
+                    {
+                        "value": "col-md-auto",
+                        "label": "Auto"
+                    }
+                ],
+                "default": "col-md-12"
+            },
+            {
+                "type": "select",
+                "id": "width_sm",
+                "label": "t:settings.width_mobile",
+                "options": [
+                    {
+                        "value": "col-1",
+                        "label": "8%"
+                    },
+                    {
+                        "value": "col-2",
+                        "label": "16%"
+                    },
+                    {
+                        "value": "col-3",
+                        "label": "25%"
+                    },
+                    {
+                        "value": "col-4",
+                        "label": "33%"
+                    },
+                    {
+                        "value": "col-5",
+                        "label": "41%"
+                    },
+                    {
+                        "value": "col-6",
+                        "label": "Half"
+                    },
+                    {
+                        "value": "col-7",
+                        "label": "58%"
+                    },
+                    {
+                        "value": "col-8",
+                        "label": "66%"
+                    },
+                    {
+                        "value": "col-9",
+                        "label": "75%"
+                    },
+                    {
+                        "value": "col-10",
+                        "label": "83%"
+                    },
+                    {
+                        "value": "col-11",
+                        "label": "92%"
+                    },
+                    {
+                        "value": "col-12",
+                        "label": "Full"
+                    },
+                    {
+                        "value": "col-auto",
+                        "label": "Auto"
+                    }
+                ],
+                "default": "col-12"
+            },
+            {
+                "type": "header",
+                "content": "Video playback controls"
+            },
+            {
+                "type": "checkbox",
+                "id": "video_muted",
+                "label": "Video Muted",
+                "default": true
+            },
+            {
+                "type": "checkbox",
+                "id": "video_autoplay",
+                "label": "Video Autoplay",
+                "visible_if": "{{ block.settings.video_muted == true }}",
+                "default": false
+            },
+            {
+                "type": "checkbox",
+                "id": "video_controls",
+                "label": "Video Controls",
+                "default": true
+            },
+            {
+                "type": "checkbox",
+                "id": "video_loop",
+                "label": "Loop Video",
+                "default": true
+            },
+            {
+                "type": "checkbox",
+                "id": "video_play_button",
+                "label": "Video Play Button",
+                "default": true
+            },
+            {
+                "type": "header",
+                "content": "Poster Video/Image",
+            },
+            {
+                "type": "select",
+                "id": "poster_type",
+                "label": "Poster Type",
+                "options": [
+                    {
+                        "value": "none",
+                        "label": "None"
+                    },
+                    {
+                        "value": "image",
+                        "label": "Image"
+                    },
+                    {
+                        "value": "video",
+                        "label": "Video"
+                    }
+                ],
+                "default": "image"
+            },
+            {
+                "type": "video",
+                "id": "poster_video_local",
+                "label": "Poster Video(Local)",
+                "visible_if": "{{ block.settings.poster_type == 'video' }}",
+                "info": "[Learn more about Autoplay policies.](https://developer.chrome.com/blog/autoplay/#new-behaviors)"
+            },
+            {
+                "type": "image_picker",
+                "id": "poster_image",
+                "label": "Select Image",
+                "visible_if": "{{ block.settings.poster_type == 'image'  }}"
+            },
+            {
+                "type": "header",
+                "content": "Video"
+            },
+            {
+                "type": "select",
+                "id": "video_type",
+                "label": "Video Type",
+                "options": [
+                    {
+                        "value": "local",
+                        "label": "Local Video"
+                    },
+                    {
+                        "value": "youtube",
+                        "label": "Youtube"
+                    }
+                ],
+                "default": "youtube"
+            },
+            {
+                "type": "select",
+                "id": "placement",
+                "label": "Placement",
+                "options": [
+                    {
+                        "value": "grid",
+                        "label": "Grid"
+                    },
+                    {
+                        "value": "popup",
+                        "label": "Modal"
+                    }
+                ],
+                "default": "grid"
+            },
+            {
+                "type": "video",
+                "id": "video_local",
+                "label": "Local Video",
+                "visible_if": "{{ block.settings.video_type == 'local' }}",
+                "info": "Use this to select/upload local video."
+            },
+            {
+                "type": "video_url",
+                "id": "video_url",
+                "label": "Video URL",
+                "accept": [
+                    "youtube"
+                ],
+                "visible_if": "{{ block.settings.video_type == 'youtube' }}",
+                "default": "https://www.youtube.com/watch?v=rgZU5pDf6mw",
+                "info": "Use this for Youtube video. Youtube link [example](https://www.youtube.com/watch?v=rgZU5pDf6mw)."
+            },
+            {
+                "type": "select",
+                "id": "media_height",
+                "label": "Height",
+                "options": [
+                    {
+                        "value": "auto",
+                        "label": "Auto"
+                    },
+                    {
+                        "value": "square",
+                        "label": "Square"
+                    },
+                    {
+                        "value": "landscape",
+                        "label": "Landscape"
+                    },
+                    {
+                        "value": "portrait",
+                        "label": "Portrait"
+                    }
+                ],
+                "default": "portrait"
+            }
+        ],
+        "presets": [
+            {
+                "name": "Video"
+            }
+        ]
+    }
+{% endschema %}
