@@ -1,74 +1,76 @@
-.search__input.field__input {
-  padding-right: 9.8rem;
-}
 
-.search__button {
-  right: var(--inputs-border-width);
-  top: var(--inputs-border-width);
-}
-
-.reset__button {
-  right: calc(var(--inputs-border-width) + 4.4rem);
-  top: var(--inputs-border-width);
-}
-
-.reset__button:not(:focus-visible)::after {
-  border-right: 0.1rem solid rgba(var(--color-foreground), 0.08);
-  display: block;
-  height: calc(100% - 1.6rem);
-  content: '';
-  position: absolute;
-  right: 0;
-}
-
-.reset__button:not(:focus)::after {
-  border-right: 0.1rem solid rgba(var(--color-foreground), 0.08);
-  display: block;
-  height: calc(100% - 1.8rem);
-  content: '';
-  position: absolute;
-  right: 0;
-}
-
-.search__button:focus-visible,
-.reset__button:focus-visible {
-  background-color: rgb(var(--color-background));
-  z-index: 4;
-}
-
-.search__button:focus,
-.reset__button:focus {
-  background-color: rgb(var(--color-background));
-  z-index: 4;
-}
-
-.search__button:not(:focus-visible):not(.focused),
-.reset__button:not(:focus-visible):not(.focused) {
-  box-shadow: inherit;
-  background-color: inherit;
-}
-
-.search__button:hover .icon,
-.reset__button:hover .icon {
-  transform: scale(1.07);
-}
-
-.search__button .icon {
-  height: 1.8rem;
-  width: 1.8rem;
-}
-
-.reset__button .icon.icon-close {
-  height: 1.8rem;
-  width: 1.8rem;
-  stroke-width: 0.1rem;
-}
-
-/* Remove extra spacing for search inputs in Safari */
 input::-webkit-search-decoration {
-  -webkit-appearance: none;
+    -webkit-appearance: none;
 }
 
-.template-search__results {
+.search-form-control[type="search"]::-webkit-search-decoration,
+.search-form-control[type="search"]::-webkit-search-cancel-button,
+.search-form-control[type="search"]::-webkit-search-results-button,
+.search-form-control[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}
+
+
+
+
+.search-form-control{
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+}
+
+.field__button {
+    align-items: center;
+    background-color: transparent;
+    border: 0;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    overflow: hidden;
+    padding-block: 10px;
+    padding-inline: 0px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+
+/*======== Predictive Search =========*/
+.predictive-search{
+  display: none;
+}
+
+.predictive-search.show-results{
+  max-height: 570px;
+  display: block;
+  overflow: auto;
+}
+
+.predictive-search-body{
+  max-width: 990px;
+}
+
+.predictive-search-footer{
+  padding: 20px 0;
+}
+.predictive-search-footer a{
+  text-transform: uppercase;
+  font-weight: 700;
+  border-bottom: 1px solid;
+}
+
+.predictive-search.show-results #results-products .list-item .predictive-search__image{ 
+  display: block;
   position: relative;
+  padding-top: 100%;
+}
+
+.predictive-search.show-results #results-products .list-item .predictive-search__image img,
+.predictive-search.show-results #results-products .list-item .predictive-search__image .placeholder-svg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }

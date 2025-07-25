@@ -1,19 +1,10 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
-      "type": "main-account",
+      "type": "template-account",
       "settings": {
-        "padding_top": 36,
-        "padding_bottom": 36
+        "section_top_spacing": "spacing-top-sm",
+        "section_bottom_spacing": "spacing-bottom-sm"
       }
     }
   },

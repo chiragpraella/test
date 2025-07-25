@@ -1,0 +1,111 @@
+{{ 'global-page-header-banner.css' | asset_url | stylesheet_tag }}
+
+<section>
+
+    {% if section.settings.fluid_layout == false %}
+        <div class="container">
+    {% endif %}        
+    <div class="page_header_banner d-flex flex-wrap position-relative page-banner--{{ section.settings.height }}" style="background: {{ section.settings.section_bg_color }};">
+        {% content_for 'blocks' %}
+    </div>
+    {% if section.settings.fluid_layout == false %}
+        </div>
+    {% endif %}        
+</section>
+
+{% schema %}
+{
+    "name": "Page Header Banner",
+    "disabled_on": {
+        "groups": ["header", "footer"]
+    },
+    "blocks": [{ "type": "_page_banner" }],
+    "settings": [
+        {
+            "type": "header",
+            "content": "Container"
+        },
+        {
+            "type": "checkbox",
+            "id": "fluid_layout",
+            "label": "Full Width Layout",
+            "default": true
+        },
+        {
+            "type":"header",
+            "content":"t:names.styles"
+        },
+        {
+            "type": "select",
+            "id": "height",
+            "label": "Media Banner Height",
+            "options": [
+                {
+                    "value": "extrasmall",
+                    "label": "Extra Small"
+                },
+                {
+                    "value": "small",
+                    "label": "Small"
+                },
+                {
+                    "value": "medium",
+                    "label": "medium"
+                },
+                {
+                    "value": "large",
+                    "label": "large"
+                },
+                {
+                    "value": "content_height",
+                    "label": "Change based on content height"
+                }
+            ],
+            "default": "large"
+        },
+        {
+            "type": "checkbox",
+            "id": "caption_style",
+            "label": "Caption Below Media in Mobile",
+            "default": false
+        },
+        {
+            "type": "color_background",
+            "id": "section_bg_color",
+            "label": "Section BG color",
+        }
+    ],
+    "presets": [
+        {
+            "name": "Page Header Banner",
+            "blocks": [
+                {
+                    "type": "_page_banner", 
+                    "blocks": [
+                        {
+                            "type": "breadcrumbs"
+                        },
+                        {
+                            "type": "group",
+                            "blocks": [
+                                {
+                                    "type": "heading",
+                                    "settings": {
+                                        "text": "<p>{{ closest.page.title }}</p>"
+                                    }
+                                },
+                                {
+                                    "type": "text",
+                                    "settings": {
+                                        "text": "<p>Tell your brand's story through images</p>"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

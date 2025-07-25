@@ -1,0 +1,29 @@
+{%- comment -%}Pre-connects{%- endcomment -%}
+<link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+<link rel="preconnect" href="fluid-framework-2-0.myshopify.com/cdn/shop/" crossorigin>
+<link rel="preconnect" href="https://monorail-edge.shopifysvc.com" crossorigin>
+
+{{ 'LibreBaskerville-Regular.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+{{ 'LibreBaskerville-Bold.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+
+{{ 'Sintony.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+{{ 'Sintony-Bold.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+
+{{ 'Quicksand-Regular.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+{{ 'Quicksand-Medium.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+{{ 'Quicksand-SemiBold.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+{{ 'Quicksand-Bold.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+
+{%- comment -%}Preload crucial render blocking assets{%- endcomment -%}
+{{ 'global.css' | asset_url | preload_tag: as: 'style' }}
+{{ 'utilities.css' | asset_url | preload_tag: as: 'style' }}
+{% if template == 'collection' %}
+    {{ 'component-filter.css' | asset_url | preload_tag: as: 'style' }}
+{% endif %}
+
+{% comment %} Preload images for LCP {% endcomment %}
+{% if template == 'collection' and collection.products[0].featured_image %}
+    {{ collection.products[0].featured_image | image_url | preload_tag: as: image }}
+{% elsif template == 'product' and product.featured_image %}
+    {{ product.featured_image | image_url | preload_tag: as: image }}
+{% endif %}

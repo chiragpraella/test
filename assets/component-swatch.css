@@ -1,25 +1,105 @@
-/* swatch lives in its own file for reusability of the swatch in swatch-input and dropdown */
-.swatch {
-  --swatch--size: var(--swatch-input--size, 4.4rem);
-  --swatch--border-radius: var(--swatch-input--border-radius, 50%);
-
-  display: block;
-  width: var(--swatch--size);
-  max-width: 100%;
-  aspect-ratio: 1 / 1;
-  background: var(--swatch--background);
-  background-position: var(--swatch-focal-point, initial);
-  background-size: cover;
-  background-origin: border-box;
-  border: 0.1rem solid rgba(var(--color-foreground), 0.15);
-  border-radius: var(--swatch--border-radius);
+.swatch input {
+    display: none;
 }
 
-.swatch--square {
-  --swatch--border-radius: var(--swatch-input--border-radius, 0.2rem);
+.swatch .form-label {
+    cursor: pointer;
+    font-size: var(--pe-font-size-md);
+    display: block;
+    border-radius: 50%;
+    position: relative;
+    background-size: 100%;
+    margin-bottom: 0;
 }
 
-.swatch--unavailable {
-  border-style: dashed;
-  border-color: rgba(var(--color-foreground), 0.5);
+
+.swatch:not(.color-swatch) .form-label {
+    border-radius: 0%;
+    border: 1px solid var(--pe-color-black);
+    padding: 5px;
+    min-width: 32px;
+    min-height: 34px;
+    text-align: center;
+    line-height: 24px;
+    transition: ease-in-out 0.25s;
+}
+
+.swatch:not(.color-swatch) input:checked + .swatch-label,
+.swatch:not(.color-swatch) input + .swatch-label:hover{
+    background-color: var(--pe-color-black);
+    color: var(--pe-color-white);
+}
+
+
+.product-details-wrapper .swatch.color-swatch .swatch-label{
+    min-width: 30px;
+    min-height: 30px;
+}
+
+.swatch.color-swatch .form-label {
+    border: 0;
+    min-width: 16px;
+    min-height: 16px;
+}
+
+.swatch.color-swatch input:checked + .swatch-label::after {
+    content: '';
+    display: block;
+    position: absolute;
+    background: var(--pe-body-bg);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.swatch.color-swatch input:checked+.swatch-label.White::after {
+    background: var(--pe-body-color);
+}
+
+.product-details-wrapper .addon-fieldset .swatch.color-swatch .swatch-label{
+    min-width: 16px;
+    min-height: 16px;
+}
+
+.product-details-wrapper .swatch.color-swatch input:checked + .swatch-label::after{
+    width: 8px;
+    height: 8px;
+}
+.product-details-wrapper .addon-fieldset .swatch.color-swatch input:checked+.swatch-label::after{
+    width: 4px;
+    height: 4px;
+}
+
+
+/* PILLS */
+
+
+
+.swatch input{
+    display: none;
+}
+
+.pills-style .swatch .form-label{
+    min-width: 46px;
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: center;
+    font-size: var(--pe-font-size-md);
+    background: transparent !important;
+    border: 1px solid var(--pe-body-color);
+    padding: 3px 10px;
+    margin-bottom: 0.5rem;
+}
+
+.pills-style .swatch input:checked + .swatch-label{
+    background: var(--pe-body-color) !important;
+    color: var(--pe-body-bg);
+    border: 1px solid var(--pe-body-color);
+}
+
+.pills-style .swatch input:checked + .swatch-label::after{
+    display: none;
 }
