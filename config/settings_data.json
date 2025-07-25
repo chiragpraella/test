@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "body_bg_color": "#ffffff",
@@ -14,17 +23,18 @@
     "type_input_font_weight": 300,
     "input_border_radius": 5,
     "form_check_border_radius": 5,
-    "favicon": "shopify:\/\/shop_images\/favicon.jpg",
-    "social_facebook_link": "https:\/\/facebook.com\/shopify",
-    "social_twitter_link": "https:\/\/twitter.com\/shopify",
-    "social_instagram_link": "http:\/\/instagram.com\/shopify",
+    "favicon": "shopify://shop_images/favicon.jpg",
+    "social_facebook_link": "https://facebook.com/shopify",
+    "social_twitter_link": "https://twitter.com/shopify",
+    "social_instagram_link": "http://instagram.com/shopify",
+    "social_youtube_link": "https://www.youtube.com/shopify",
     "product_exclude_tag_text": "hidden",
-    "placeholder_image": "shopify:\/\/shop_images\/placeholder-image.svg",
+    "placeholder_image": "shopify://shop_images/general-img-landscape.png",
     "placeholder_bg": "#d7d7d7",
-    "checkout_logo_image": "shopify:\/\/shop_images\/logo-fluid.png",
+    "checkout_logo_image": "shopify://shop_images/logo-fluid.png",
     "checkout_accent_color": "#000000",
     "checkout_button_color": "#000000",
-    "main_logo_socials": "shopify:\/\/shop_images\/wp3850825-4k-pc-wallpapers.jpg",
+    "main_logo_socials": "shopify://shop_images/wp3850825-4k-pc-wallpapers.jpg",
     "enable_custom_accrodion": true,
     "enable_custom_tabify": true,
     "enable_login": true,
@@ -35,9 +45,9 @@
           "72531854-f78e-478c-976b-9755ebe32b5d": {
             "type": "logo",
             "settings": {
-              "footer_logo": "shopify:\/\/shop_images\/fluid-logo-v-0.2.svg",
+              "footer_logo": "shopify://shop_images/fluid-logo-v-0.2.svg",
               "logo_max_width": 180,
-              "text": "<p>Designed in a silhouette inspired by Art-Deco style, our Business Bag packs a ton of features.<\/p>"
+              "text": "<p>Designed in a silhouette inspired by Art-Deco style, our Business Bag packs a ton of features.</p>"
             }
           },
           "cd6458c2-4aec-4775-88e0-14a49701029d": {
@@ -58,7 +68,7 @@
             "type": "newsletter",
             "settings": {
               "heading": "Stay in Touch",
-              "text": "<p>Get monthly updates and free resources.<\/p>",
+              "text": "<p>Get monthly updates and free resources.</p>",
               "show_newsletter": true,
               "show_social_links": true,
               "social_heading": "Connect with Us",
@@ -98,8 +108,8 @@
           "popup_delay": 1,
           "popup_period_until": 7,
           "heading": "Subscribe to Newsletter",
-          "text": "<p>Subscribe and get exclusive offers!<\/p>",
-          "footer_notes": "<p>No SPAM! We not share your email to any 3rd part companies!<\/p>",
+          "text": "<p>Subscribe and get exclusive offers!</p>",
+          "footer_notes": "<p>No SPAM! We not share your email to any 3rd part companies!</p>",
           "btn_txt": "Subscribe",
           "template_type": "image_bg",
           "bg_color_inner": "#ffffff",
@@ -113,7 +123,7 @@
             "type": "_cart-upsell",
             "name": "Cart Upsell",
             "settings": {
-              "heading": "<p>Upsell<\/p>",
+              "heading": "<p>Upsell</p>",
               "text_size": "fs-xl",
               "font_family": "font-family-base",
               "font_weight": "fw-normal",
@@ -141,8 +151,11 @@
               "nav_arrows": false,
               "nav_arrows_visible": "both",
               "nav_arrows_color": "",
+              "nav_arrows_size": "",
               "nav_arrows_outside": "inside",
               "nav_dots": false,
+              "pagination_visible": "both",
+              "pagination_color": "",
               "nav_scrollbar": true,
               "scrollbar_visible": "both",
               "scrollbar_color": ""
@@ -295,26 +308,12 @@
         "settings": {
           "heading": "My Cart",
           "show_count": true,
-          "empty_cart_msg": "<p>Your cart is empty<\/p>",
+          "empty_cart_msg": "<p>Your cart is empty</p>",
           "continue_shopping_btn": "Continue Shopping",
           "continue_shopping_url": ""
         }
       }
     },
-    "content_for_index": [],
-    "blocks": {
-      "14339172867238703359": {
-        "type": "shopify:\/\/apps\/yotpo-product-photo-reviews\/blocks\/reviews_tab\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
-        "disabled": true,
-        "settings": {
-          "product": ""
-        }
-      },
-      "7570552984445421165": {
-        "type": "shopify:\/\/apps\/yotpo-product-reviews\/blocks\/settings\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
-        "disabled": true,
-        "settings": {}
-      }
-    }
+    "content_for_index": []
   }
 }
