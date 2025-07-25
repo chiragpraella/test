@@ -1,0 +1,32 @@
+{%- liquid
+  assign image_alt = alt | default: image.alt
+  assign fetchpriority = 'low'
+  if preload == true
+    assign loading = 'eager'
+    assign fetchpriority = 'high'
+  endif
+-%}
+
+<img {% if preload != true %}data-{% endif %}srcset="
+    {%- if image.src.width >= 350 -%}{{ image.src | image_url: width: 350 }} 350w,{%- endif -%}
+    {%- if image.src.width >= 550 -%}{{ image.src | image_url: width: 550 }} 550w,{%- endif -%}
+    {%- if image.src.width >= 750 -%}{{ image.src | image_url: width: 750 }} 750w,{%- endif -%}
+    {%- if image.src.width >= 991 -%}{{ image.src | image_url: width: 991 }} 991w,{%- endif -%}
+    {%- if image.src.width >= 1200 -%}{{ image.src | image_url: width: 1200 }} 1200w,{%- endif -%}
+    {%- if image.src.width >= 1500 -%}{{ image.src | image_url: width: 1500 }} 1500w,{%- endif -%}
+    {{ image.src | image_url }} {{ image.src.width }}w"
+    {% if preload == true %}
+      src="{{ image.src | image_url: width: 750 }}"
+    {% else %}
+      src="{{ 'animated-placeholder.svg' | asset_url }}"
+      data-src="{{ image.src | image_url: width: 750 }}"
+    {% endif %}
+    loading="{{ loading | default: 'lazy' }}"
+    sizes="{{ sizes }}"
+    alt="{{ image_alt | default: shop.name | escape }}"
+    width="{{ image.src.width }}"
+    height="{{ image.src.width | divided_by: image.src.aspect_ratio | round }}"
+    class="{% if preload != true %}lozad {% endif %}{{ class }}"
+    fetchpriority="{{ fetchpriority }}"
+    {{ attributes }}
+>

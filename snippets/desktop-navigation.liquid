@@ -1,0 +1,117 @@
+
+<ul class="navbar-nav align-items-center me-auto">
+      {% for link in linklists[section.settings.menu].links %}
+          {%- liquid 
+            assign menu_block = section.blocks | where: 'type', 'megamenu' | map: 'settings' | where: 'title', link.title | first | default: blank
+          -%}
+
+          {% if menu_block != blank %}
+              <li class="nav-item dropdown megamenu{% if link.active %} active{% endif %}" role="menuitem" is="drop-down">
+                  <a href="{{ link.url }}"
+                    class="nav-link dropdown-toggle d-flex align-items-center justify-content-between text-capitalize {{ link.handle }}" 
+                    tabindex="0" role="button" data-toggle="dropdown" 
+                    aria-expanded="false" aria-haspopup="menu" 
+                    title="{{ link.title }}" aria-label="{{ link.title }}">
+                      <span>{{ link.title }}</span> 
+                      <svg aria-hidden="true" focusable="false" style="width:12px;height:12px;" class="ms-1"><use href="#icon-arrow-down"></use></svg>
+                  </a>
+                  <ul class="dropdown-menu">
+                      <div class="container" tabIndex="-1">
+                          <div class="row">
+                              <div class="col-md-9">
+                                  <ul class="list-unstyled d-flex gap-3">
+                                      {%- for childlink in link.links -%}
+                                      <li class="col">
+                                          <div class="text-uppercase fw-bold fs-xl" tabindex="0" aria-label="{{ childlink.title }}">{{ childlink.title }}</div>
+                                          <ul class="list-unstyled">
+                                              {%- for thirdlink in childlink.links -%}
+                                              <li class="nav-item">
+                                                  <a href="{{ thirdlink.url }}" class="nav-link" title="{{ thirdlink.title }}" aria-label="{{ thirdlink.title }}">{{ thirdlink.title }}</a>
+                                              </li>
+                                              {%- endfor -%}
+                                          </ul>
+                                      </li>
+                                      {%- endfor -%}
+                                  </ul>
+                              </div>
+                              {% if menu_block != blank %}
+                              <div class="col-md-3">
+                                  <div class="megamenu_img--wrapper position-relative">
+                                      {% if menu_block.image %}
+                                        {% capture img_alt %}
+                                            Megamenu for {{ link.title }}
+                                        {% endcapture %}
+                                          <div class="megamenu-img">
+                                                {%- render 'image', 
+                                                    image: menu_block.image,
+                                                    sizes: '(min-width: 992px) 400px, 50px'
+                                                    loading: 'lazy',
+                                                    alt: img_alt,
+                                                    class: 'img-fluid w-100'
+                                                -%}
+                                          </div>
+                                          <div class="megamenu_img-overlay"></div>
+                                      {% endif %}
+                                      {% if menu_block.link_text != '' %}
+                                          <a href="{{ menu_block.link_url }}" class="fw-bold">{{ menu_block.link_text }} <svg aria-hidden="true" focusable="false" style="width:15px;height:15px;"><use href="#icon-arrow-next"></use></svg></a>
+                                      {% endif %}
+                                  </div>
+                              </div>
+                              {% endif %}
+                          </div>
+                      </div>
+                  </ul> 
+              </li>
+          {% elsif link.links != blank %}
+              <li class="nav-item dropdown {% if link.active %} active{% endif %}" is="drop-down" role="menuitem">
+                  <a href="{{ link.url }}" class="nav-link dropdown-toggle d-flex align-items-center justify-content-between text-capitalize {{ link.handle }}"
+                    tabindex="0" role="button"
+                    aria-expanded="false" aria-haspopup="menu"
+                    name="{{ link.title }}" title="{{ link.title }}"
+                    aria-label="{{ link.title }}">
+                      <span>{{ link.title }}</span>
+                      <svg aria-hidden="true" focusable="false" style="width:12px;height:12px;" class="ms-1"><use href="#icon-arrow-down"></use></svg>
+                  </a>
+                  <ul class="dropdown-menu" tabIndex="-1">
+                      {% for childlink in link.links %}
+                            <li class="nav-item" role="menuitem">
+                                <a class="nav-link d-flex align-items-center justify-content-between{% if childlink.active %} active{% endif %} {{ childlink.handle }}" href="{{ childlink.url }}" title="{{ childlink.title }}" aria-label="{{ childlink.title }}">
+                                    {{ childlink.title }}
+                                </a>
+                            </li>
+                      {% endfor %}
+                  </ul>
+              </li>
+          {% else %}
+              <li class="nav-item {% if link.active %} active{% endif %}" role="menuitem">
+                  <a class="nav-link text-capitalize {{ link.handle }}" href="{{ link.url }}" tabindex="0" title="{{ link.title }}" aria-label="{{ link.title }}">
+                      {{ link.title }}
+                  </a>
+              </li>
+          {% endif %}
+      {% endfor %}
+  </ul>
+    <ul class="navbar-nav navbar-icon-links">
+            <li class="nav-item" role="menuitem">
+                <a href="{{ routes.search_url }}" class="nav-link modal__toggle open-searchform" 
+                    data-toggleDrawer="header-search-layer" aria-haspopup="dialog" aria-label="{{ 'general.search.title' | t }}">
+                    <svg aria-hidden="true" focusable="false" style="width:25px;height:25px;"><use href="#icon-search"></use></svg>
+                </a>
+            </li>
+        {% if shop.customer_accounts_enabled %}
+            <li class="nav-item" role="menuitem">
+                <a class="nav-link" href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" title="account" rel="nofollow" aria-label="Account">
+                        <svg aria-hidden="true" focusable="false" style="width:25px;height:25px;"><use href="#icon-user"></use></svg>
+                </a>
+            </li>
+        {% endif %}
+        <li class="nav-item" role="menuitem">
+            <a href="{{ routes.cart_url }}" class="nav-link header__icon--cart position-relative" 
+                id="cart-icon-desktop" rel="nofollow" title="cart" rel="nofollow" aria-label="Cart"
+                data-toggleDrawer="component-cart-drawer">
+                <svg aria-hidden="true" focusable="false" style="width:25px;height:25px;"><use href="#icon-cart"></use></svg>
+                <span class="visually-hidden">{{ 'templates.cart.title' | t }}</span>
+                <span aria-hidden="true" class="cart-count{% if cart.item_count == 0 %} d-none{% endif %}">{{ cart.item_count }}</span>
+            </a>
+        </li>
+    </ul>

@@ -1,0 +1,34 @@
+
+/*=============================================
+=              Content Pages CSS              =
+=============================================*/
+
+.content-header-banner{
+    position: relative;
+}
+
+.header-banner-img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.header-banner-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.content-pages .rte p{
+    margin-bottom: 1.5rem;
+}
+.content-pages .rte h1,
+.content-pages .rte h2,
+.content-pages .rte h3,
+.content-pages .rte h4,
+.content-pages .rte h5,
+.content-pages .rte h6 {
+    margin-top: 1em;
+    margin-bottom: 0.75em;
+}

@@ -1,0 +1,94 @@
+{% stylesheet %}
+
+  .card-product-style-2.card-img > a {
+      padding-top: 100%;
+      display: block;
+      position: relative;
+  }
+
+  .card-product-style-2 .card-img > a img,
+  .card-product-style-2 .card-img > a .placeholder-svg { 
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+  }
+{% endstylesheet %}
+
+{% comment %}theme-check-disable UnusedAssign{% endcomment %}
+{%- capture img_sizes -%}
+  (min-width: {{ settings.container_width }}) {{ settings.container_width | minus: 150 | divided_by: 4 }}px, (min-width: 768px) calc((100vw - 130px) / 2), 50vw
+{%- endcapture -%}
+{% comment %}theme-check-enable UnusedAssign{% endcomment %}
+ 
+<div class="card card-product card-product-style-2 text-start rounded-0 border-0 bg-transparent" data-product-card>
+    <div class="card-img text-center {% if product.featured_image.size == 0 %}bg-gray-300{% endif %}" >
+        {%- if product.featured_image != blank -%}
+            <a href="{{ product.url | within: collection }}" class="d-block product-link position-relative" >
+              {%- render 'image',
+                image: product.featured_image,
+                sizes: img_sizes,
+                alt: product.featured_image.alt | default: card_title | escape
+              -%}
+            </a>
+        {%- else -%}
+            {% render 'placeholder-image' %}
+        {%- endif -%}
+    </div>
+
+    <div class="card-body p-0">
+        <div class="row no-gutter">
+            <div class="col-12">
+                <h2 class="card-title h6 mb-1 font-family-base fs-lg">
+                    <a class="product-link lh-base" role="button" href="{{ product.url | within: collection }}">{{ product.title }}</a>
+                </h2>
+            </div>
+            <div class="col-12 text-start">
+                {%- render 'product-price', product: product -%}
+            </div>
+            <div class="col-12 pt-2">
+                <product-form class="product-form">
+                    {%- assign product_form_id = 'product-form-' | append: product.id -%}
+                    {% form 'product', product, data-productid: product.id, id: product_form_id, class: "mt-4", data-product-form: "", data-product-id: product.id, data-type: 'add-to-cart-form', data-format: 'grid' %}
+                      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                      <input type="hidden" name="quantity" value="1" />
+
+                      {% comment %} <div class="quantity-wrapper mb-4" data-qty-container>
+                        <span class="fw-medium text-uppercase fs-sm mb-2 d-inline-block" title="Label {{ 'products.product.quantity.label' | t }}">{{ 'products.product.quantity.label' | t }}</span>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <a href="#" class="input-group-text btn min-h-100 disabled" rel="nofollow" aria-label="{{ 'products.product.quantity.decrease' | t: product: product.title | escape }}" title="{{ 'products.product.quantity.decrease' | t: product: product.title | escape }}" data-for="decrease" data-qty-btn>
+                              <span class="btn-decrease"></span>
+                              <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: product.title | escape }}</span>
+                            </a>
+                          </div>
+                          <input type="text" name="quantity" aria-label="{{ 'products.product.quantity.input_label' | t: product: product.title | escape }}" value="1" step="1" min="1" inputmode="numeric" data-qty-input class="quantity form-control text-center">
+                          <div class="input-group-append">
+                            <a href="#" class="input-group-text btn min-h-100" rel="nofollow" aria-label="{{ 'products.product.quantity.increase' | t: product: product.title | escape }}" title="{{ 'products.product.quantity.increase' | t: product: product.title | escape }}" data-for="increase" data-qty-btn>
+                              <span class="btn-increase btn-increase d-flex h-100 align-items-center"></span>
+                              <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: product.title | escape }}</span>
+                            </a>
+                          </div>
+                        </div>
+                      </div> {% endcomment %}
+
+                      <div class="row">
+                        <div class="col-12 d-flex">
+                            <button class="btn btn-primary btn-sm flex-grow-1 px-2"
+                                type="submit"
+                                name="add"
+                                aria-label="{{ 'products.product.add_to_cart' | t | escape }}"
+                                {% unless product.available %}disabled{% endunless %}>
+                                <span class="add-text">{%- if product.available -%}{{ 'products.product.add_to_cart' | t }}{%- else-%}{{ 'products.product.sold_out' | t }}{%- endif -%}</span>
+                                <span class="spinner-border"></span>
+                            </button>
+                        </div>
+                      </div>
+                    {% endform %}
+                </product-form>
+            </div>
+        </div>
+    </div>
+</div>

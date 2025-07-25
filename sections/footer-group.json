@@ -1,0 +1,72 @@
+{
+  "type": "footer",
+  "name": "Footer Group",
+  "sections": {
+    "footer": {
+      "type": "Footer",
+      "blocks": {
+        "logo_fr9dfm": {
+          "type": "logo",
+          "settings": {
+            "footer_logo": "shopify:\/\/shop_images\/fluid-logo-v-0.2.svg",
+            "logo_max_width": 180,
+            "text": "<p>Designed in a silhouette inspired by Art-Deco style, our Business Bag packs a ton of features.<\/p>"
+          }
+        },
+        "menu_ztgAbN": {
+          "type": "menu",
+          "settings": {
+            "enable_nav_1": true,
+            "heading_1": "Customer Care",
+            "linklist_1": "customer-support",
+            "enable_nav_2": true,
+            "heading_2": "Main Menu",
+            "linklist_2": "main-menu",
+            "enable_nav_3": true,
+            "heading_3": "Company",
+            "linklist_3": "company"
+          }
+        },
+        "newsletter_AjQX64": {
+          "type": "newsletter",
+          "settings": {
+            "heading": "Stay in Touch",
+            "text": "<p>Get monthly updates and free resources.<\/p>",
+            "show_newsletter": true,
+            "show_social_links": true,
+            "social_heading": "Connect with Us",
+            "social_icon_facebook": true,
+            "social_icon_twitter": true,
+            "social_icon_instagram": true,
+            "social_icon_youtube": true
+          }
+        }
+      },
+      "block_order": [
+        "logo_fr9dfm",
+        "menu_ztgAbN",
+        "newsletter_AjQX64"
+      ],
+      "settings": {
+        "fluid_footer": false,
+        "footer_top_bg_color": "#f3f3f3",
+        "footer_top_txt_color": "#5b5b5b",
+        "footer_top_link_color": "#5b5b5b",
+        "footer_bottom_bg_color": "#f3f3f3",
+        "footer_bottom_txt_color": "#5b5b5b",
+        "bottom_footer_linklist": "",
+        "show_payment_icons": true,
+        "payment_icon_visa": true,
+        "payment_icon_mastercard": true,
+        "payment_icon_ae": true,
+        "payment_icon_diners": true,
+        "payment_icon_paypal": true,
+        "payment_icon_applepay": true,
+        "payment_icon_amazonpay": true
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

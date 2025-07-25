@@ -1,0 +1,662 @@
+{% capture spacing_class_list %}
+    {{ section.settings.section_top_spacing }} {{ section.settings.section_top_spacing_ipad }} {{ section.settings.section_top_spacing_mobile }} {{ section.settings.section_bottom_spacing }} {{ section.settings.section_bottom_spacing_ipad }} {{ section.settings.section_bottom_spacing_mobile }}
+{% endcapture %}
+
+<section>
+    <div class="{{ spacing_class_list }}">
+        <div class="{% if section.settings.fluid_layout %}container-fluid{% else %}container{% endif %}">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="contact-us-sidebar rounded">
+                        {%- for block in section.blocks -%}
+                            {%- case block.type -%}
+                                {%- when 'address' -%}
+                                    <div {{ block.shopify_attributes }} data-block-id="{{ block.id }}" class="mb-5" style="color: {{ block.settings.address_txt_color }};">
+                                        <h2 class="mb-3 h6">{{ block.settings.address_heading | escape }}</h2> 
+                                        <div class="d-flex align-items-center">
+                                            <svg aria-hidden="true" focusable="false" style="width:24px;height:24px;" class="me-3"><use href="#icon-location"></use></svg>
+                                            <p>{{ block.settings.Address | escape }}</p>
+                                        </div>
+                                    </div>
+
+                                {%- when 'phone_number' -%}
+                                    <div {{ block.shopify_attributes }} data-block-id="{{ block.id }}" class="phone-contact mb-5" style="color: {{ block.settings.phone_txt_color }};">
+                                        <h2 class="mb-3 h6">{{ block.settings.phone_heading }}</h2> 
+                                        <div class="d-flex align-items-center">
+                                            <svg aria-hidden="true" focusable="false" style="width:24px;height:24px;" class="me-3"><use href="#icon-phone"></use></svg>
+                                            {{ block.settings.phone_no }}
+                                        </div>
+                                    </div>    
+
+                                {%- when 'email' -%}
+                                    <div {{ block.shopify_attributes }} data-block-id="{{ block.id }}" class="email-contact mb-5" style="color: {{ block.settings.email_txt_color }};">
+                                        <h2 class="mb-3 h6">{{ block.settings.email_heading }}</h2> 
+                                        <div class="d-flex align-items-center">
+                                            <svg aria-hidden="true" focusable="false" style="width:24px;height:24px;" class="me-3"><use href="#icon-mail"></use></svg>
+                                            {{ block.settings.email_address }}
+                                        </div>
+                                    </div>   
+                                    
+                                {%- when 'follow_us' -%}    
+                                    <div {{ block.shopify_attributes }} data-block-id="{{ block.id }}" class="mb-5" style="color: {{ block.settings.follow_txt_color }};">
+                                        <h2 class="mb-3 h6">{{ block.settings.social_heading }}</h2> 
+                                        <ul class="social-sharing contact-social-links d-flex list-unstyled mb-0">
+                                            {% if block.settings.social_icon_instagram %} 
+                                                <li>
+                                                    <a {% if settings.social_instagram_link != blank %}href="{{ settings.social_instagram_link }}"{% endif %} target="_blank" style="color: {{ section.settings.footer_top_link_color }};"  name="Instagram" title="Instagram" rel="nofollow noreferrer" aria-label="Instagram"
+                                                    class="d-flex align-items-center justify-content-center text-decoration-none">
+                                                        <svg aria-hidden="true" focusable="false" style="width:22px;height:22px;"><use href="#icon-instagram"></use></svg>
+                                                    </a>
+                                                </li>
+                                            {% endif %}
+        
+                                            {% if block.settings.social_icon_facebook %}
+                                                <li>
+                                                    <a {% if settings.social_facebook_link != blank %}href="{{ settings.social_facebook_link }}"{% endif %} target="_blank" style="color: {{ section.settings.footer_top_link_color }};" name="Facebook" title="Facebook" rel="nofollow noreferrer" aria-label="Facebook"
+                                                    class="d-flex align-items-center justify-content-center text-decoration-none">
+                                                        <svg aria-hidden="true" focusable="false" style="width:22px;height:22px;"><use href="#icon-facebook"></use></svg>
+                                                    </a>
+                                                </li>
+                                            {% endif %}
+        
+                                            {% if block.settings.social_icon_pinterest %}
+                                                <li>
+                                                    <a {% if settings.social_pinterest_link != blank %}href="{{ settings.social_pinterest_link }}"{% endif %} target="_blank" style="color: {{ section.settings.footer_top_link_color }};" name="pinterest" title="pinterest" rel="nofollow noreferrer" aria-label="pinterest"
+                                                    class="d-flex align-items-center justify-content-center text-decoration-none">
+                                                        <svg aria-hidden="true" focusable="false" style="width:22px;height:22px;"><use href="#icon-pinterest"></use></svg>
+                                                    </a>
+                                                </li>
+                                            {% endif %}
+        
+                                            {% if block.settings.social_icon_twitter %}
+                                                <li>
+                                                    <a {% if settings.social_twitter_link != blank %}href="{{ settings.social_twitter_link }}"{% endif %} target="_blank" style="color: {{ section.settings.footer_top_link_color }};"  name="Twitter" title="Twitter" rel="nofollow noreferrer" aria-label="Twitter"
+                                                    class="d-flex align-items-center justify-content-center text-decoration-none">
+                                                        <svg aria-hidden="true" focusable="false" style="width:22px;height:22px;"><use href="#icon-twitter"></use></svg>
+                                                    </a>
+                                                </li>
+                                            {% endif %}
+        
+                                            {% if block.settings.social_icon_youtube %}
+                                                <li>
+                                                    <a {% if settings.social_youtube_link != blank %}href="{{ settings.social_youtube_link }}"{% endif %} target="_blank" style="color: {{ section.settings.footer_top_link_color }};"  name="YouTube" title="YouTube" rel="nofollow noreferrer" aria-label="YouTube"
+                                                    class="d-flex align-items-center justify-content-center text-decoration-none">
+                                                        <svg aria-hidden="true" focusable="false" style="width:22px;height:22px;"><use href="#icon-youtube"></use></svg>
+                                                    </a>
+                                                </li>
+                                            {% endif %}
+                                        </ul>
+                                    </div>    
+                            {%- endcase -%}    
+                        {% endfor %}
+                    </div>
+                </div>
+                {%- for block in section.blocks -%}
+                    {% if block.type == "contact_form" %}
+                        <div class="col-lg-8 mt-lg-0 mt-6">
+                            <div class="contact">
+                                {%- form 'contact', id: 'ContactForm' -%}
+                                    <div class="contact__fields mb-5">
+                                        {% if block.settings.heading != '' %}<h3 class="mb-3 h4" style="color: {{ block.settings.heading_color }};">{{ block.settings.heading }}</h3>{% endif %}
+                                        {% if block.settings.form_text != '' %}<div class="mb-3">{{ block.settings.form_text }}</div>{% endif %} 
+                                        {%- if form.posted_successfully? -%}
+                                        <div class="form-status form-status-list form__message" tabindex="-1" autofocus>{{ 'templates.contact.form.post_success' | t }}</div>
+                                        {%- elsif form.errors -%}
+                                            <div class="form__message">
+                                                <h2 class="form-status caption-large" role="alert" tabindex="-1" autofocus>{{ 'templates.contact.form.error_heading' | t }}</h2>
+                                            </div>
+                                            <ul class="form-status-list caption-large" role="list">
+                                                <li>
+                                                    <a href="#ContactForm-email" class="link">
+                                                        {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        {%- endif -%}
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 form-group">
+                                            <div class="form-floating">
+                                                <input class="form-control" autocomplete="first_name" type="text" id="ContactForm-first_name" name="contact[{{ 'templates.contact.form.first_name' | t }}]" value="{% if form.first_name %}{{ form.first_name }}{% elsif customer %}{{ customer.first_name }}{% endif %}" placeholder="{{ 'templates.contact.form.first_name' | t }}" required>
+                                                <label for="ContactForm-first_name">{{ 'templates.contact.form.first_name' | t }}</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            <div class="form-floating">
+                                                <input class="form-control" autocomplete="last_name" type="text" id="ContactForm-last_name" name="contact[{{ 'templates.contact.form.last_name' | t }}]" value="{% if form.last_name %}{{ form.last_name }}{% elsif customer %}{{ customer.last_name }}{% endif %}" placeholder="{{ 'templates.contact.form.last_name' | t }}">
+                                                <label for="ContactForm-last_name">{{ 'templates.contact.form.last_name' | t }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row field--with-error">
+                                        <div class="col-md-6 form-group">
+                                            <div class="form-floating">
+                                                <input autocomplete="email" type="email" id="ContactForm-email" class="form-control fs-md lh-1" name="contact[email]" spellcheck="false" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" aria-required="true" required {% if form.errors contains 'email' %} aria-invalid="true" aria-describedby="ContactForm-email-error"{% endif %} placeholder="{{ 'templates.contact.form.email' | t }}">
+                                                <label for="ContactForm-email">{{ 'templates.contact.form.email' | t }}</label>
+                                            </div>
+
+                                            {%- if form.errors contains 'email' -%}
+                                                <small class="contact__field-error" id="ContactForm-email-error">
+                                                    <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
+                                                    <span class="form__message">{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}</span>
+                                                </small>
+                                            {%- endif -%}
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            <div class="form-floating">
+                                                <input type="tel" id="ContactForm-phone" class="form-control fs-md lh-1" autocomplete="tel" name="contact[{{ 'templates.contact.form.phone' | t }}]" value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}" 
+                                                    placeholder="{{ 'templates.contact.form.phone' | t }}" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
+                                                <label for="ContactForm-phone">{{ 'templates.contact.form.phone' | t }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="form-floating">
+                                            <textarea rows="10" id="ContactForm-body" class="text-area form-control fs-md lh-1" required name="contact[{{ 'templates.contact.form.comment' | t }}]" placeholder="{{ 'templates.contact.form.comment' | t }}">{{- form.body -}}</textarea>
+                                            <label for="ContactForm-body">{{ 'templates.contact.form.comment' | t }}</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="contact__button text-end">
+                                        <button type="submit" class="btn btn-primary">
+                                            {{ 'templates.contact.form.send' | t }}
+                                        </button>
+                                    </div>
+                                {%- endform -%}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    {% assign map_block = section.blocks | where: 'type', 'maps' | first %}
+    {%- if map_block != blank -%}
+        <div class="bg-light-white {{ map_block.settings.section_top_spacing }} {{ map_block.settings.section_bottom_spacing }}">
+            <iframe 
+                width="600" height="450" 
+                style="border: 0px; width: 100%;" 
+                allowfullscreen=""
+                loading="lazy"
+                src="{{ map_block.settings.maps_link }}"
+                referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+        </div>
+    {% endif %}
+</section>
+
+{%- liquid 
+  assign text_block = section.blocks | where: 'type', 'contact_form' | first
+  assign phone_block = section.blocks | where: 'type', 'phone_number' | first
+  assign email_block = section.blocks | where: 'type', 'email' | first
+-%}
+<script type="application/ld+json" id="schema-contact-graph">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "potentialAction": [{
+      "@type": "ContactAction",
+      "name": "{{ text_block.settings.heading | default: "Get expert assistance" | escape }}",
+      "telephone": "{{ phone_block.settings.phone_no | strip_html | escape }}",
+      "email": "{{ email_block.settings.email_address | strip_html | escape }}"
+    }]
+  }
+</script>
+
+{% schema %}
+    {
+        "name": "Contact Us",
+        "settings": [
+            {
+                "type": "header",
+                "content": "Layout"
+            },
+            {
+                "type": "checkbox",
+                "id": "fluid_layout",
+                "label": "Full Width Layout?",
+                "default": false
+            },
+            {
+                "type": "header",
+                "content": "t:spacing.section_spacing"
+            },
+            {
+                "type": "select",
+                "id": "section_top_spacing",
+                "label": "t:spacing.desktop_top_spacing",
+                "options": [
+                    {
+                        "value": "",
+                        "label": "None"
+                    },
+                    {
+                        "value": "spacing-top-xs",
+                        "label": "t:spacing.tight"
+                    },
+                    {
+                        "value": "spacing-top-sm",
+                        "label": "t:spacing.standard"
+                    },
+                    {
+                        "value": "spacing-top-md",
+                        "label": "t:spacing.spacious"
+                    },
+                    {
+                        "value": "spacing-top-lg",
+                        "label": "t:spacing.extra_spacious"
+                    }
+                ],
+                "default": "spacing-top-sm"
+            },
+            {
+                "type": "select",
+                "id": "section_top_spacing_ipad",
+                "label": "t:spacing.ipad_top_spacing",
+                "options": [
+                    {
+                        "value": "",
+                        "label": "None"
+                    },
+                    {
+                        "value": "spacing-top-ipad-xs",
+                        "label": "t:spacing.tight"
+                    },
+                    {
+                        "value": "spacing-top-ipad-sm",
+                        "label": "t:spacing.standard"
+                    },
+                    {
+                        "value": "spacing-top-ipad-md",
+                        "label": "t:spacing.spacious"
+                    },
+                    {
+                        "value": "spacing-top-ipad-lg",
+                        "label": "t:spacing.extra_spacious"
+                    }
+                ],
+                "default": "spacing-top-ipad-sm"
+            },
+            {
+                "type": "select",
+                "id": "section_top_spacing_mobile",
+                "label": "t:spacing.mobile_top_spacing",
+                "options": [
+                    {
+                        "value": "",
+                        "label": "None"
+                    },
+                    {
+                        "value": "spacing-top-mobile-xs",
+                        "label": "t:spacing.tight"
+                    },
+                    {
+                        "value": "spacing-top-mobile-sm",
+                        "label": "t:spacing.standard"
+                    },
+                    {
+                        "value": "spacing-top-mobile-md",
+                        "label": "t:spacing.spacious"
+                    },
+                    {
+                        "value": "spacing-top-mobile-lg",
+                        "label": "t:spacing.extra_spacious"
+                    }
+                ],
+                "default": "spacing-top-mobile-sm"
+            },
+            {
+                "type": "select",
+                "id": "section_bottom_spacing",
+                "label": "t:spacing.desktop_bottom_spacing",
+                "options": [
+                    {
+                        "value": "",
+                        "label": "None"
+                    },
+                    {
+                        "value": "spacing-bottom-xs",
+                        "label": "t:spacing.tight"
+                    },
+                    {
+                        "value": "spacing-bottom-sm",
+                        "label": "t:spacing.standard"
+                    },
+                    {
+                        "value": "spacing-bottom-md",
+                        "label": "t:spacing.spacious"
+                    },
+                    {
+                        "value": "spacing-bottom-lg",
+                        "label": "t:spacing.extra_spacious"
+                    }
+                ],
+                "default": "spacing-bottom-sm"
+            },
+            {
+                "type": "select",
+                "id": "section_bottom_spacing_ipad",
+                "label": "t:spacing.ipad_bottom_spacing",
+                "options": [
+                    {
+                        "value": "",
+                        "label": "None"
+                    },
+                    {
+                        "value": "spacing-bottom-ipad-xs",
+                        "label": "t:spacing.tight"
+                    },
+                    {
+                        "value": "spacing-bottom-ipad-sm",
+                        "label": "t:spacing.standard"
+                    },
+                    {
+                        "value": "spacing-bottom-ipad-md",
+                        "label": "t:spacing.spacious"
+                    },
+                    {
+                        "value": "spacing-bottom-ipad-lg",
+                        "label": "t:spacing.extra_spacious"
+                    }
+                ],
+                "default": "spacing-bottom-ipad-sm"
+            },
+            {
+                "type": "select",
+                "id": "section_bottom_spacing_mobile",
+                "label": "t:spacing.mobile_bottom_spacing",
+                "options": [
+                    {
+                        "value": "",
+                        "label": "None"
+                    },
+                    {
+                        "value": "spacing-bottom-mobile-xs",
+                        "label": "t:spacing.tight"
+                    },
+                    {
+                        "value": "spacing-bottom-mobile-sm",
+                        "label": "t:spacing.standard"
+                    },
+                    {
+                        "value": "spacing-bottom-mobile-md",
+                        "label": "t:spacing.spacious"
+                    },
+                    {
+                        "value": "spacing-bottom-mobile-lg",
+                        "label": "t:spacing.extra_spacious"
+                    }
+                ],
+                "default": "spacing-bottom-mobile-sm"
+            },
+            {
+                "type":"header",
+                "content":"Header Banner"
+            },
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Banner Image"
+            },
+            {
+                "type":"paragraph",
+                "content":"t:names.styles"
+            },
+            {
+                "type": "color",
+                "id": "section_bg_color",
+                "label": "t:settings.background_color",
+                "default": "#f3f3f3"
+            },
+            {
+                "type": "color",
+                "id": "section_txt_color",
+                "label": "t:settings.text_color",
+                "default": "#202124"
+            },
+            {
+                "type":"paragraph",
+                "content":"content"
+            },
+            {
+                "type": "inline_richtext",
+                "id": "heading",
+                "label": "Heading"
+            },
+            {
+                "type": "richtext",
+                "id": "txt",
+                "label": "Lead Text",
+                "default": "<p>Please fill out the form below to email your questions and comments to us 24 hours a day. A representative will respond to you via email or phone as soon as possible.</p>"
+            },
+            {
+                "type": "range",
+                "id": "banner_height",
+                "min": 100,
+                "max": 750,
+                "step": 10,
+                "default": 350,
+                "unit": "px",
+                "label": "Content Header Banner Height"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "contact_form",
+                "name": "Contact Form",
+                "limit": 1,
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "heading",
+                        "label": "Heading",
+                        "default": "Send us a message"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "form_text",
+                        "label": "Text",
+                        "default": "<p>Starred (*) fields are required. Please let us know if you prefer phone or email communication.</p>"
+                    },
+                    {
+                        "type":"color",
+                        "id":"heading_color",
+                        "label":"Heading Color"
+                    }
+                ]
+            },
+            {
+                "type": "address",
+                "name": "Store Location",
+                "limit": 1,
+                "settings": [
+                    {
+                        "type": "inline_richtext",
+                        "id": "address_heading",
+                        "label": "Heading",
+                        "default": "Store Location"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "Address",
+                        "label": "Address",
+                        "default": "203 N La Salle St, Suite 2100, Chicago, IL 60601"
+                    },
+                    {
+                        "type": "color",
+                        "id": "address_txt_color",
+                        "label": "t:settings.text_color",
+                        "default": "#ffffff"
+                    }
+                ]
+            },
+            {
+                "type": "phone_number",
+                "name": "Phone Number",
+                "limit": 1,
+                "settings": [
+                    {
+                        "type": "inline_richtext",
+                        "id": "phone_heading",
+                        "label": "Heading",
+                        "default": "Phone"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "phone_no",
+                        "label": "Phone Number",
+                        "default": "<p>012-345-6789</p>"
+                    }, 
+                    {
+                        "type": "color",
+                        "id": "phone_txt_color",
+                        "label": "t:settings.text_color",
+                        "default": "#ffffff"
+                    }
+                ]
+            },
+            {
+                "type": "email",
+                "name": "Email",
+                "limit": 1,
+                "settings": [
+                    {
+                        "type": "inline_richtext",
+                        "id": "email_heading",
+                        "label": "Heading",
+                        "default": "Email Us"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "email_address",
+                        "label": "Email"
+                    },
+                    {
+                        "type": "color",
+                        "id": "email_txt_color",
+                        "label": "t:settings.text_color",
+                        "default": "#ffffff"
+                    }
+                ]
+            },
+            {
+                "type": "follow_us",
+                "name": "Follow Us",
+                "limit": 1,
+                "settings": [
+                    {
+                        "type": "inline_richtext",
+                        "id": "social_heading",
+                        "label": "Heading",
+                        "default": "Follow Us"
+                    },
+                    {
+                        "type": "checkbox",
+                        "id": "social_icon_facebook",
+                        "label": "Facebook",
+                        "default": true
+                    },
+                    {
+                        "type": "checkbox",
+                        "id": "social_icon_pinterest",
+                        "label": "pinterest",
+                        "default": true
+                    },
+                    {
+                        "type": "checkbox",
+                        "id": "social_icon_twitter",
+                        "label": "Twitter",
+                        "default": true
+                    },
+                    {
+                        "type": "checkbox",
+                        "id": "social_icon_instagram",
+                        "label": "Instagram",
+                        "default": true
+                    },
+                    {
+                        "type": "checkbox",
+                        "id": "social_icon_youtube",
+                        "label": "YouTube",
+                        "default": true
+                    },
+                    {
+                        "type": "color",
+                        "id": "follow_txt_color",
+                        "label": "Heading Color",
+                        "default": "#202124"
+                    }
+                ]
+            },
+            {
+                "type": "maps",
+                "name": "Maps",
+                "limit": 1,
+                "settings": [
+                    {
+                        "type": "textarea",
+                        "id": "maps_link",
+                        "label": "Maps Link"
+                    },
+                    {
+                        "type": "select",
+                        "id": "section_top_spacing",
+                        "label": "Top Spacing",
+                        "options": [
+                            {
+                                "value": "",
+                                "label": "None"
+                            },
+                            {
+                                "value": "spacing-top-sm",
+                                "label": "Small"
+                            },
+                            {
+                                "value": "spacing-top-md",
+                                "label": "Medium"
+                            },
+                            {
+                                "value": "spacing-top-lg",
+                                "label": "Large"
+                            }
+                        ],
+                        "default": "spacing-top-sm"
+                    },
+                    {
+                        "type": "select",
+                        "id": "section_bottom_spacing",
+                        "label": "Bottom Spacing",
+                        "options": [
+                            {
+                                "value": "",
+                                "label": "None"
+                            },
+                            {
+                                "value": "spacing-bottom-sm",
+                                "label": "Small"
+                            },
+                            {
+                                "value": "spacing-bottom-md",
+                                "label": "Medium"
+                            },
+                            {
+                                "value": "spacing-bottom-lg",
+                                "label": "Large"
+                            }
+                        ],
+                        "default": "spacing-bottom-sm"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}
+
+
+
+
+
