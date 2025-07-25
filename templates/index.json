@@ -1,256 +1,36 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "global_header_slider_yhnQiE": {
-      "type": "global-header-slider",
+    "image-with-text": {
+      "type": "image-with-text",
       "blocks": {
-        "slide_WYTKjy": {
-          "type": "_slide",
+        "heading": {
+          "type": "heading",
           "settings": {
-            "image": "shopify:\/\/shop_images\/seramia2.jpg",
-            "image_mobile": "shopify:\/\/shop_images\/arclatte.jpg",
-            "slide_bg_color": "#ffffff",
-            "enable_overlay": true,
-            "overlay_on_mobile": false,
-            "overlay_bg_color": "#000000",
-            "overlay_opacity": 0.5,
-            "blend_mode": "none",
-            "display": "d-flex",
-            "align_items": "align-items-md-center",
-            "align_items_mb": "align-items-center",
-            "justify_content": "justify-content-md-start",
-            "justify_content_mb": "justify-content-center"
-          },
-          "blocks": {
-            "group_hdgTEd": {
-              "type": "group",
-              "settings": {
-                "width": "col-lg-5",
-                "width_md": "col-md-6",
-                "width_sm": "col-12",
-                "display": "d-flex",
-                "direction": "flex-md-column",
-                "direction_mobile": "flex-column",
-                "wrap": "flex-nowrap",
-                "align_items": "align-items-md-start",
-                "align_items_mb": "align-items-center",
-                "justify_content": "justify-content-md-start",
-                "justify_content_mb": "justify-content-center",
-                "padding_top_desktop": "pt-md-6",
-                "padding_bottom_desktop": "pb-md-6",
-                "padding_left_desktop": "ps-md-3",
-                "padding_right_desktop": "pe-md-3",
-                "padding_top_mobile": "pt-6",
-                "padding_bottom_mobile": "pb-6",
-                "padding_left_mobile": "ps-3",
-                "padding_right_mobile": "pe-3",
-                "gap_column": "column-gap-md-0",
-                "gap_row": "row-gap-md-0",
-                "gap_column_mobile": "column-gap-0",
-                "gap_row_mobile": "row-gap-0",
-                "bg_color": "transparent",
-                "border": "border-0",
-                "border_color": "#666666",
-                "border_radius": 0
-              },
-              "blocks": {
-                "heading_kK9Np3": {
-                  "type": "heading",
-                  "settings": {
-                    "text": "<h1>Image Banner<\/h1>",
-                    "text_size": "",
-                    "font_family": "font-family-heading",
-                    "alignment": "text-md-start",
-                    "alignment_mobile": "text-center",
-                    "color": "#ffffff",
-                    "margin_top_desktop": "mt-md-0",
-                    "margin_bottom_desktop": "mb-md-3",
-                    "margin_top_mobile": "mt-0",
-                    "margin_bottom_mobile": "mb-2"
-                  },
-                  "blocks": {}
-                },
-                "text_qgtjJU": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>A lead text is an opening paragraph that gives the audience the most important information in a concise and clear manner.<\/p>",
-                    "text_size": "fs-base",
-                    "font_weight": "fw-normal",
-                    "text_style": "",
-                    "alignment": "text-md-start",
-                    "alignment_mobile": "text-center",
-                    "color": "#ffffff",
-                    "margin_top_desktop": "mt-md-0",
-                    "margin_bottom_desktop": "mb-md-5",
-                    "margin_top_mobile": "mt-0",
-                    "margin_bottom_mobile": "mb-4"
-                  },
-                  "blocks": {}
-                },
-                "buttons_7UN3iL": {
-                  "type": "buttons",
-                  "settings": {
-                    "link": "",
-                    "icon": "none",
-                    "label": "Button label",
-                    "style_class": "btn-light",
-                    "size_class": "",
-                    "open_in_new_tab": false,
-                    "hide_desktop": false,
-                    "hide_mobile": false,
-                    "full_width": false
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "heading_kK9Np3",
-                "text_qgtjJU",
-                "buttons_7UN3iL"
-              ]
-            }
-          },
-          "block_order": [
-            "group_hdgTEd"
-          ]
+            "heading": "BROWSE OUR LATEST PRODUCTS",
+            "heading_size": "h0"
+          }
         },
-        "slide_video_9nDaE8": {
-          "type": "_slide_video",
+        "button": {
+          "type": "button",
           "settings": {
-            "muted": true,
-            "controls": true,
-            "loop": true,
-            "slide_bg_color": "#ffffff",
-            "enable_overlay": true,
-            "overlay_on_mobile": false,
-            "overlay_bg_color": "#000000",
-            "overlay_opacity": 0.5,
-            "blend_mode": "none",
-            "display": "d-flex",
-            "direction": "flex-md-column",
-            "direction_mobile": "flex-column",
-            "wrap": "flex-nowrap",
-            "align_items": "align-items-md-center",
-            "align_items_mb": "align-items-center",
-            "justify_content": "justify-content-md-start",
-            "justify_content_mb": "justify-content-center"
-          },
-          "blocks": {
-            "group_Ym8qNh": {
-              "type": "group",
-              "settings": {
-                "width": "col-lg-5",
-                "width_md": "col-md-6",
-                "width_sm": "col-12",
-                "display": "d-flex",
-                "direction": "flex-md-column",
-                "direction_mobile": "flex-column",
-                "wrap": "flex-nowrap",
-                "align_items": "align-items-md-start",
-                "align_items_mb": "align-items-center",
-                "justify_content": "justify-content-md-start",
-                "justify_content_mb": "justify-content-center",
-                "padding_top_desktop": "pt-md-0",
-                "padding_bottom_desktop": "pb-md-0",
-                "padding_left_desktop": "ps-md-3",
-                "padding_right_desktop": "pe-md-3",
-                "padding_top_mobile": "pt-6",
-                "padding_bottom_mobile": "pb-6",
-                "padding_left_mobile": "ps-3",
-                "padding_right_mobile": "pe-3",
-                "gap_column": "column-gap-md-0",
-                "gap_row": "row-gap-md-0",
-                "gap_column_mobile": "column-gap-0",
-                "gap_row_mobile": "row-gap-0",
-                "bg_color": "transparent",
-                "border": "border-0",
-                "border_color": "#666666",
-                "border_radius": 0
-              },
-              "blocks": {
-                "heading_3zw4Jd": {
-                  "type": "heading",
-                  "settings": {
-                    "text": "<h1>Image Banner<\/h1>",
-                    "text_size": "",
-                    "font_family": "font-family-heading",
-                    "alignment": "text-md-start",
-                    "alignment_mobile": "text-center",
-                    "color": "#ffffff",
-                    "margin_top_desktop": "mt-md-0",
-                    "margin_bottom_desktop": "mb-md-3",
-                    "margin_top_mobile": "mt-0",
-                    "margin_bottom_mobile": "mb-2"
-                  },
-                  "blocks": {}
-                },
-                "text_rVdeGb": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>A lead text is an opening paragraph that gives the audience the most important information in a concise and clear manner.<\/p>",
-                    "text_size": "fs-base",
-                    "font_weight": "fw-normal",
-                    "text_style": "",
-                    "alignment": "text-md-start",
-                    "alignment_mobile": "text-center",
-                    "color": "#ffffff",
-                    "margin_top_desktop": "mt-md-0",
-                    "margin_bottom_desktop": "mb-md-5",
-                    "margin_top_mobile": "mt-0",
-                    "margin_bottom_mobile": "mb-4"
-                  },
-                  "blocks": {}
-                },
-                "buttons_EJFQXk": {
-                  "type": "buttons",
-                  "settings": {
-                    "link": "",
-                    "icon": "none",
-                    "label": "Button label",
-                    "style_class": "btn-light",
-                    "size_class": "",
-                    "open_in_new_tab": false,
-                    "hide_desktop": false,
-                    "hide_mobile": false,
-                    "full_width": false
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "heading_3zw4Jd",
-                "text_rVdeGb",
-                "buttons_EJFQXk"
-              ]
-            },
-            "slide-video": {
-              "type": "custom-video",
-              "static": true,
-              "settings": {
-                "width": "col-lg-12",
-                "width_md": "col-md-12",
-                "width_sm": "col-12",
-                "video_muted": true,
-                "video_autoplay": false,
-                "video_controls": true,
-                "video_loop": true,
-                "video_play_button": true,
-                "poster_type": "image",
-                "video_type": "youtube",
-                "placement": "grid",
-                "video_url": "https:\/\/www.youtube.com\/watch?v=rgZU5pDf6mw",
-                "media_height": "portrait"
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "group_Ym8qNh"
-          ]
+            "button_label": "SHOP",
+            "button_link": "shopify://collections/all",
+            "button_style_secondary": false
+          }
         }
       },
       "block_order": [
-        "slide_WYTKjy",
-        "slide_video_9nDaE8"
+        "heading",
+        "button"
       ],
       "settings": {
         "height": "mediumheight",
@@ -6633,22 +6413,6 @@
     }
   },
   "order": [
-    "global_header_slider_yhnQiE",
-    "global_auto_scroll_7PpzLn",
-    "global_features_grid_q7tDKW",
-    "global_collections_list_jPwNi4",
-    "global_media_banner_WHnUCe",
-    "global_collections_list_Ue9kVh",
-    "global_featured_collection_KV4Tci",
-    "global_banner_with_product_nUyVmM",
-    "global_image_with_product_RawkqB",
-    "global_media_banner_D9TLKP",
-    "global_brand_list_JBCzDM",
-    "global_collections_list_mLnqeC",
-    "custom_section_RnBmPc",
-    "global_product_tabs_i4VVnU",
-    "media_with_text_jyVDac",
-    "media_with_text_U7t8dk",
-    "global_blog_posts_GBNpgr"
+    "image-with-text"
   ]
 }
